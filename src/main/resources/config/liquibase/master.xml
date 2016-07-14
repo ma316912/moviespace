@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <!-- <include file="classpath:config/liquibase/changelog/20160609134644_added_entity_Language.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160609134645_added_entity_Genre.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160609134646_added_entity_ProductionCompany.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160609134647_added_entity_ProductionCountry.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160609134648_added_entity_Movie.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160614131857_added_entity_Review.xml" relativeToChangelogFile="false"/> -->
+    <include file="classpath:config/liquibase/changelog/20160621100022_added_entity_Language.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100023_added_entity_Genre.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100024_added_entity_Person.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100025_added_entity_PersonCast.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100026_added_entity_PersonCrew.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100027_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100028_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100029_added_entity_Movie.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100030_added_entity_Review.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100031_added_entity_Collection.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100032_added_entity_Credits.xml" relativeToChangelogFile="false"/>
+    <!-- JHipster will add liquibase changelogs here -->
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <!-- <include file="classpath:config/liquibase/changelog/20160609134648_added_entity_constraints_Movie.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160614131857_added_entity_constraints_Review.xml" relativeToChangelogFile="false"/> -->
+    <include file="classpath:config/liquibase/changelog/20160621100025_added_entity_constraints_PersonCast.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100026_added_entity_constraints_PersonCrew.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100027_added_entity_constraints_Company.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100029_added_entity_constraints_Movie.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160621100030_added_entity_constraints_Review.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

@@ -1,0 +1,98 @@
+<div class="pad">
+    <br/>
+     <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><strong>{{vm.person.name}}</strong></div>
+                <div class="panel-body">
+                    <img ng-src="{{vm.person.profilePath}}" class="center-block" alt="{{vm.person.name}}">
+                </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Birthday :</strong> {{vm.person.birthday | date:'MMM dd, yyyy'}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Place of Birth :</strong> {{vm.person.birthPlace}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Official Site :</strong>
+                            <a ng-if="vm.person.homepage" target="_blank" class="btn btn-primary btn-xs" href="{{vm.person.homepage}}">
+                            {{vm.person.homepage}}
+                            </a>
+                            <span ng-if="!vm.person.homepage">--</span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Also Known As :</strong> {{vm.person.aka}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>IMDB Profile :</strong> <a target="_blank" href="http://www.imdb.com/name/{{vm.person.imdbId}}"><i class="fa fa-link"></i></a>
+                        </li>
+                    </ul>
+         </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Bio</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div ng-switch on="(vm.person.biography&&vm.person.biography.length!=0)">
+                        <p ng-switch-when="true">{{vm.person.biography}}</p>
+                        <p ng-switch-default class="text text-warning">Bio not available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="row">
+     <div class="col-xs-12">
+     <div class="panel panel-primary">
+         <div class="panel-heading">
+             <h3 class="panel-title">Associated Movies</h3>
+         </div>
+         <div class="panel-body">
+            <div ng-switch on="vm.loading">
+            <div ng-switch-when="true">
+                <div class="text-center">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div ng-switch-when="false">
+            <div ng-switch on="(vm.movies && vm.movies.length>0)">
+            <div ng-switch-when="fasle">
+                <h3>No Movies found for this Person</h3>
+            </div>
+            <div ng-switch-when="true">
+            <div ng-repeat="movie in vm.movies" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdropPath}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.voteAverage">
+                                       <label>{{movie.voteAverage | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ui-sref="movie-detail({id:movie.id})" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div> 
+                </div>       
+            </div>
+            </div>
+         </div>
+     </div>
+     </div>
+     </div>
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

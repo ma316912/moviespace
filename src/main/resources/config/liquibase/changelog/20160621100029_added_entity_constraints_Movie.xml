@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Movie.
+    -->
+    <changeSet id="20160621100029-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="movies_id"
+                                 baseTableName="movie_genre"
+                                 constraintName="fk_movie_genre_genre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="movie"/>
+        <addForeignKeyConstraint baseColumnNames="genres_id"
+                                 baseTableName="movie_genre"
+                                 constraintName="fk_movie_genre_movie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="genre"/>
+        
+        <addForeignKeyConstraint baseColumnNames="movies_id"
+                                 baseTableName="movie_production_company"
+                                 constraintName="fk_mov_pro_com_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="movie"/>
+        <addForeignKeyConstraint baseColumnNames="production_companies_id"
+                                 baseTableName="movie_production_company"
+                                 constraintName="fk_com_pro_mov_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+        
+        <addForeignKeyConstraint baseColumnNames="movies_id"
+                                 baseTableName="movie_production_country"
+                                 constraintName="fk_mov_pro_cou_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="movie"/>
+        <addForeignKeyConstraint baseColumnNames="production_countries_id"
+                                 baseTableName="movie_production_country"
+                                 constraintName="fk_cou_pro_mov_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+        
+        <addForeignKeyConstraint baseColumnNames="movies_id"
+                                 baseTableName="movie_spoken_language"
+                                 constraintName="fk_mov_spo_lan_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="movie"/>
+        <addForeignKeyConstraint baseColumnNames="spoken_languages_id"
+                                 baseTableName="movie_spoken_language"
+                                 constraintName="fk_lan_spo_mov_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="language"/>
+        
+        <addForeignKeyConstraint baseColumnNames="credits_id"
+                                 baseTableName="movie"
+                                 constraintName="fk_movie_credits_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="credits"/>
+
+        <addForeignKeyConstraint baseColumnNames="belongs_to_collection_id"
+                                 baseTableName="movie"
+                                 constraintName="fk_mov_bel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="collection"/>
+
+    </changeSet>
+</databaseChangeLog>

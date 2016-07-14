@@ -1,0 +1,205 @@
+<div>
+    <h2>Movies</h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <!-- <thead>
+                <tr>
+                    <th><span>Title</span></th>
+                    <th><span>Popularity</span></th>
+                    <th><span>Backdrop Path</span></th>
+                    <th><span>Poster Path</span></th>
+                    <th><span>Release Date</span></th>
+                    <th><span>Adult</span></th>
+                    <th><span>Budget</span></th>
+                    <th><span>Home Page</span></th>
+                    <th><span>Imdb Id</span></th>
+                    <th><span>Revenue</span></th>
+                    <th><span>Runtime</span></th>
+                    <th><span>Tagline</span></th>
+                    <th><span>User Rating</span></th>
+                    <th><span>Vote Average</span></th>
+                    <th><span>Vote Count</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Genre</span></th>
+                </tr>
+            </thead> -->
+            <tbody>
+                <tr ng-repeat="movie in vm.movies track by movie.id">
+                    <!-- <td><a ui-sref="movie-detail({id:movie.id})">{{movie.id}}</a></td>
+                    <td>{{movie.externalId}}</td>
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.originalTitle}}</td>
+                    <td>{{movie.popularity}}</td>
+                    <td>{{movie.backdropPath}}</td>
+                    <td>{{movie.posterPath}}</td>
+                    <td>{{movie.releaseDate | date:'medium'}}</td>
+                    <td>{{movie.adult}}</td>
+                    <td>{{movie.budget}}</td>
+                    <td>{{movie.homePage}}</td>
+                    <td>{{movie.overview}}</td>
+                    <td>{{movie.imdbId}}</td>
+                    <td>{{movie.revenue}}</td>
+                    <td>{{movie.runtime}}</td>
+                    <td>{{movie.tagline}}</td>
+                    <td>{{movie.userRating}}</td>
+                    <td>{{movie.voteAverage}}</td>
+                    <td>{{movie.voteCount}}</td>
+                    <td>{{movie.status}}</td>
+                    <td>
+                        <span ng-repeat="genre in movie.genres">
+                            <a class="form-control-static" ui-sref="genre-detail({id: {{genre.id}}})">{{genre.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="productionCompany in movie.productionCompanies">
+                            <a class="form-control-static" ui-sref="company-detail({id: {{productionCompany.id}}})">{{productionCompany.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="productionCountry in movie.productionCountries">
+                            <a class="form-control-static" ui-sref="country-detail({id: {{productionCountry.id}}})">{{productionCountry.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="spokenLanguage in movie.spokenLanguages">
+                            <a class="form-control-static" ui-sref="language-detail({id: {{spokenLanguage.id}}})">{{spokenLanguage.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <a ui-sref="credits-detail({id:movie.creditsId})">{{movie.creditsId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="collection-detail({id:movie.belongsToCollectionId})">{{movie.belongsToCollectionId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="movie-detail({id:movie.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="movie.edit({id:movie.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="movie.delete({id:movie.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td> -->
+                    <td>
+                    <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="thumbnail">
+                            <img ng-src="{{movie.backdropPath}}" alt="">
+                            <div class="caption">
+                                <h3>{{movie.originalTitle}}</h3>
+                                <p>
+                                    <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="movie-detail({id:movie.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="movie.edit({id:movie.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="movie.delete({id:movie.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                                </p>
+                                <p>
+                                    <a href="#" class="btn btn-primary">Action</a>
+                                    <a href="#" class="btn btn-default">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="container-fluid">
+                    <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                         <img ng-src="{{movie.backdropPath}}" class="img-responsive" alt="Image">
+                     </div>
+                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                         <div class="table-responsive">
+                             <table class="table table-hover">
+                                 <tbody>
+                                     <tr>
+                                        <td><strong>{{movie.originalTitle}}</strong></td>
+                                        <td><span class="pull-right" ng-init="rate=movie.voteAverage">
+                                        <uib-rating ng-model="rate" max="10" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                       <label>{{movie.voteAverage | number:1}}/10</label>
+                                    </span></td>
+                                     </tr>
+                                     <tr>
+                                        <td><span ng-repeat="genre in movie.genres">
+                            <a class="form-control-static" ui-sref="genre-detail({id: {{genre.id}}})"><em>{{genre.name}}</em></a>{{$last ? '' : ', '}}
+                        </span>&nbsp;</td>
+                                        <td><span class="pull-right">{{movie.releaseDate | date:'dd-MMM-yyyy'}}</span></td>
+                                     </tr>
+                                     <tr>
+                                         <td colspan="2">
+                        <span ng-repeat="productionCompany in movie.productionCompanies">
+                            <a class="label label-info badge" ui-sref="company-detail({id: {{productionCompany.id}}})">{{productionCompany.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                         </div>
+                         <hr/>
+                         <p>
+                                    <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="movie-detail({id:movie.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <!-- <button type="submit"
+                                    ui-sref="movie.edit({id:movie.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button> -->
+                            <button type="submit"
+                                    ui-sref="movie.delete({id:movie.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                                </p>
+                     </div>   
+                    </div>   
+                    </div>
+                    <!-- <div class="jumbotron">
+                        <div class="container">
+                            <h1>Hello, world!</h1>
+                            <p>Contents ...</p>
+                            <p>
+                                <a class="btn btn-primary btn-lg">Learn more</a>
+                            </p>
+                        </div>
+                    </div> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+
+<div>
+    <h2><span>Genre</span></h2>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+         <div class="panel panel-primary">
+             <div class="panel-heading">
+                 <h3 class="panel-title">Genre Detail</h3>
+             </div>
+             <div class="panel-body">
+                <span>Name : </span><span>{{vm.genre.name}}</span>
+             </div>
+         </div>   
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Movies
+            <span class="pull-right">
+                <div class="btn-group flex-btn-group-container">
+                            <a type="button" title="view in list" ng-click="list=true">
+                                <span class="fa fa-th-list"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </a>
+                            <a type="button" title="view in thumbnail" ng-click="list=false">
+                                <span class="fa fa-th-large"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </a>
+                        </div>
+            </span>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <!-- <table class="table table-bordered table-hover">
+                <tbody>
+                    <tr ng-repeat="movie in vm.genreMovies">
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                    <img ng-src="{{movie.backdropPath}}" class="img-responsive" alt="Image">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
+            <div ng-switch on="vm.loading">
+            <div ng-switch-when="true">
+                <div class="text-center">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div ng-switch-when="false">
+            <div ng-switch on="(vm.genreMovies && vm.genreMovies.length>0)">
+            <div ng-switch-when="fasle">
+                <h3>No Movies found for this genre</h3>
+            </div>
+            <div ng-switch-when="true">
+                    <div ng-show="!list">
+                    <div ng-repeat="movie in vm.genreMovies" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdropPath}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.voteAverage">
+                                       <label>{{movie.voteAverage | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ui-sref="movie-detail({id:movie.id})" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div ng-show="list">
+                        <table class="table table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Release Year</th>
+                                    <th>Rating</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="movie in vm.genreMovies">
+                                    <td>{{movie.originalTitle}}</td>
+                                    <td>{{movie.releaseDate | date:'yyyy'}}</td>
+                                    <td>
+                                        <span ng-init="rate=movie.voteAverage">
+                                       <label>{{movie.voteAverage | number:1}}</label> <uib-rating ng-model="rate" max="10" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <a href="#" ui-sref="movie-detail({id:movie.id})" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <div class="row pad" ng-repeat="movie in vm.genreMovies">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <img ng-src="{{movie.backdropPath}}" class="img-thumbnail" alt="No Image">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                                <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.voteAverage">
+                                       <label>{{movie.voteAverage | number:1}}</label> <uib-rating ng-model="rate" max="10" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ui-sref="movie-detail({id:movie.id})" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </p>
+                            </div>
+                        </div> -->
+                        </div>
+                </div> 
+                </div>       
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

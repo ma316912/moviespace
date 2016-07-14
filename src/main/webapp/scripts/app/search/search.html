@@ -1,0 +1,148 @@
+		<div class="form-group">
+			<legend>Search</legend>
+		</div>
+		<form action="" method="POST" role="form">
+			<!-- <div class="row">
+			<div class="form-group col-md-6">
+				<label class="sr-only" for="">Keyword</label>
+				<input type="search" class="col-md-12 form-control" id="" placeholder="Enter search query">
+			</div>
+			<div class="form-group col-md-4">
+				<select name="" id="input" class="col-md-12 form-control" required="required">
+					<option value="movie">Movie</option>
+					<option value="person">Person</option>
+					<option value="company">Company</option>
+					<option value="collection">Collection</option>
+				</select>
+			</div>
+		    <button type="submit" class="col-md-2 btn btn-primary">Submit</button>
+		    </div> -->
+		    <div class="row">
+		    	<div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+		    		<input type="search" class="form-control" id="" ng-model="searchObj.query" placeholder="Enter search query">
+		    	</div>
+		    	<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+		    		<select name="" id="input" class="form-control" ng-model="searchObj.type" required="required">
+					<option value="movie">Movie</option>
+					<option value="person">Person</option>
+					<option value="company">Company</option>
+					<option value="collection">Collection</option>
+				</select>
+		    	</div>
+		    	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+		    		<button type="button" ng-click="search()" class="btn btn-primary">Submit</button>
+		    	</div>
+		    </div>
+		</form>
+
+		<div ng-if="flag">
+		<hr/>
+		<div ng-if="searchObj.type=='movie'">
+		<div ng-switch on="(results && results.length>0)">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Movies</h3>
+			</div>
+			<div class="panel-body">
+				<div ng-switch-when="true">
+		<div ng-repeat="movie in results" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail-card">
+                                <img ng-src="{{movie.backdrop_path}}" class="img-responsive" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.vote_average">
+                                       <label>{{movie.vote_average | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <button ng-click="addMovieToMySpace(movie)" class="btn btn-primary">Add</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+        </div>                
+		<div ng-switch-when="false">
+			No Movies found
+		</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		
+
+		<div ng-if="searchObj.type=='company'">
+		<div ng-switch="results.length>0">
+		<div ng-switch-when="true" class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="company in results">
+				 		<td>{{company.name}}</td>
+				 		<td><button ng-click="addCompanyToMySpace(company)" class="btn btn-primary">Add</button></td>
+		 			</tr>
+				</tbody>
+			</table>
+		</div>
+		<div ng-switch-when="false">
+			No Companies found
+		</div>
+		</div>
+		</div>
+
+		<div ng-if="searchObj.type=='person'">
+			<div ng-switch="results.length>0">
+		<div ng-switch-when="true">
+			<div class="container">
+			<div class="row">
+			<div ng-repeat="person in results">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<a class="thumbnail">
+					<img ng-src="{{person.profile_path}}" alt=""/>
+					<div class="text text-info text-center"><strong>{{person.name}}</strong></div>
+					<p>
+                    <button ng-click="addPersonToMySpace(person)" class="btn btn-primary">Add</button>
+                    </p>
+				</a>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		<div ng-switch-when="false">
+			No Persons found
+		</div>
+		</div>
+		</div>
+
+		<div ng-if="searchObj.type=='collection'">
+			<div ng-switch="results.length>0">
+		<div ng-switch-when="true">
+			<div class="row">
+			<div ng-repeat="collection in results">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<div class="thumbnail">
+					<img ng-src="{{collection.poster_path}}" alt=""/>
+					<div class="caption">
+        				<h5>{{collection.name}}</h5>
+        				<p><a href="#" ng-click="viewCollection(collection)" class="btn btn-primary" role="button">View</a></p>
+      				</div>
+      		</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		<div ng-switch-when="false">
+			No collections found
+		</div>
+		</div>
+		</div>
+
+		</div>
+		

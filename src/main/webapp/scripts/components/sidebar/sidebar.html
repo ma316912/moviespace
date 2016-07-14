@@ -1,0 +1,39 @@
+<section class="sidebar scroll-body"
+	slimscroll="{size: 5, height:'auto', color:'#ccc'}"
+	ng-switch="isAuthenticated()">
+	<!-- search form -->
+	<div class="sidebar-form">
+		<div class="input-group">
+			<input type="text" class="form-control" ng-model="menuFilterText"
+				placeholder="Search in menu" /> <span class="input-group-btn">
+				<button name='search' id='search-btn' class="btn btn-flat">
+					<i class="fa fa-search"></i>
+				</button>
+			</span>
+		</div>
+	</div>
+
+	<ul class="sidebar-menu" ng-switch-when="true">
+		<li class="header" ng-repeat-start="item in menuItems">{{item.header}}</li>
+		<li ng-repeat-end ui-sref-active="active"
+			ng-repeat="menu in item.items |filter:menuFilterText"><a
+			ng-if="!menu.external && menu.menuHasSubModules" tree-view-menu>
+				<i class="fa {{menu.icon}}"></i>&nbsp;<span>{{menu.dispLabel}}</span>
+				<i class="fa fa-angle-left pull-right"></i>
+		</a> <a ng-if="!menu.external && !menu.menuHasSubModules"
+			ui-sref="{{menu.href}}"> <i class="fa {{menu.icon}}"></i>&nbsp;<span>{{menu.dispLabel}}</span>
+				<span ng-if="menu.badge" class="label label-info pull-right">{{menu.badge}}</span>
+		</a> <a ng-if="menu.external" href="{{menu.href}}" target="_blank"> <i
+				class="fa {{menu.icon}}"></i>&nbsp;<span>{{menu.dispLabel}}</span>
+		</a>
+			<ul class="treeview-menu" ng-if="menu.menuHasSubModules">
+				<li ng-repeat="smenu in menu.subModules" ui-sref-active="active">
+					<a ng-if="!smenu.menuHasSections" ui-sref="{{smenu.href}}"><i
+						class="fa {{smenu.icon}}"></i>&nbsp;{{smenu.dispLabel}}</a>
+				</li>
+
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- /.sidebar -->

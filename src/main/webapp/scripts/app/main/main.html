@@ -1,0 +1,87 @@
+<div>
+ <uib-tabset active="0" justified="true">
+    <uib-tab index="0" heading="Popular">
+
+    <div ng-repeat="movie in movies.popularMovies" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdrop_path}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.vote_average">
+                                       <label>{{movie.vote_average | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ng-click="showMovieDetail(movie)" class="btn btn-primary">Add</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    </uib-tab>
+    <uib-tab index="1" heading="Top Rated">
+
+    <div ng-repeat="movie in movies.topRatedMovies" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdrop_path}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.vote_average">
+                                       <label>{{movie.vote_average | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ng-click="showMovieDetail(movie)" class="btn btn-primary">Add</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+    </uib-tab>
+    <uib-tab index="2" heading="Upcoming">
+
+    <div ng-repeat="movie in movies.upcomingMovies" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdrop_path}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.vote_average">
+                                       <label>{{movie.vote_average | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ng-click="showMovieDetail(movie)" class="btn btn-primary">Add</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+    </uib-tab>
+    <uib-tab index="3" heading="Now Playing">
+
+    <div ng-repeat="movie in movies.latestMovies" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdrop_path}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.vote_average">
+                                       <label>{{movie.vote_average | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ng-click="showMovieDetail(movie)" class="btn btn-primary">Add</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+    </uib-tab>
+  </uib-tabset>
+</div>

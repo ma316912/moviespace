@@ -1,0 +1,135 @@
+<!-- 
+<div>
+    <h2><span>Company</span> {{vm.company.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>External Id</span></dt>
+        <dd>
+            <span>{{vm.company.externalId}}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.company.name}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.company.description}}</span>
+        </dd>
+        <dt><span>Headquarters</span></dt>
+        <dd>
+            <span>{{vm.company.headquarters}}</span>
+        </dd>
+        <dt><span>Homepage</span></dt>
+        <dd>
+            <span>{{vm.company.homepage}}</span>
+        </dd>
+        <dt><span>Logo Path</span></dt>
+        <dd>
+            <span>{{vm.company.logoPath}}</span>
+        </dd>
+        <dt><span>Parent Company</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.company.parentCompany.id})">{{vm.company.parentCompany.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
+ -->
+<div class="pad">
+    <br/>
+     <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><strong>{{vm.company.name}}</strong></div>
+                <div class="panel-body">
+                    <img ng-src="{{vm.company.logoPath}}" class="center-block" alt="{{vm.company.name}}">
+                </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Headquarters :</strong> {{vm.company.headquarters}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Official Site :</strong>
+                            <a ng-if="vm.company.homepage" target="_blank" class="btn btn-primary btn-xs" href="{{vm.company.homepage}}">
+                            {{vm.company.homepage}}
+                            </a>
+                            <span ng-if="!vm.company.homepage">--</span>
+                        </li>
+                    </ul>
+                    <li class="list-group-item">
+                            <strong>Parent Company :</strong> <a ui-sref="company-detail({id:vm.company.parentCompany.id})">{{vm.company.parentCompany.name}}</a>
+                    </li>
+         </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Description</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div ng-switch on="(vm.company.description&&vm.company.description.length!=0)">
+                        <p ng-switch-when="true">{{vm.company.description}}</p>
+                        <p ng-switch-default class="text text-warning">Description not available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="row">
+     <div class="col-xs-12">
+     <div class="panel panel-primary">
+         <div class="panel-heading">
+             <h3 class="panel-title">Produced Movies</h3>
+         </div>
+         <div class="panel-body">
+            <div ng-switch on="vm.loading">
+            <div ng-switch-when="true">
+                <div class="text-center">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div ng-switch-when="false">
+            <div ng-switch on="(vm.movies && vm.movies.length>0)">
+            <div ng-switch-when="fasle">
+                <h3>No Movies found for this Company</h3>
+            </div>
+            <div ng-switch-when="true">
+            <div ng-repeat="movie in vm.movies" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="thumbnail-card">
+                                <img ng-src="{{movie.backdropPath}}" class="img-responsive" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.voteAverage">
+                                       <label>{{movie.voteAverage | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ui-sref="movie-detail({id:movie.id})" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div> 
+                </div>       
+            </div>
+            </div>
+         </div>
+     </div>
+     </div>
+     </div>
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

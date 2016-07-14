@@ -1,0 +1,62 @@
+
+<div>
+    <h2>{{vm.collection.name}}</h2>
+    <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4"> <!-- Left Panel -->
+        <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Basic Info</h3>
+        </div>
+        <div class="panel-body">
+            <img ng-src="{{vm.collection.backdropPath}}" class="center-block img-responsive" alt="Image">
+        </div> 
+                     <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <strong>Released : </strong>
+                                {{vm.collection.releaseDate | date:'dd-MMM-yyyy'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>Overview : </strong>
+                                {{vm.collection.overview}}
+                            </span>
+                        </li>
+                    </ul>                    
+        </div>
+    </div> <!-- Left Panel -->
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8"> <!-- Right Panel -->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Parts</h3>
+            </div>
+            <div class="panel-body">
+                <div ng-repeat="movie in vm.collection.parts" class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="thumbnail">
+                                <img ng-src="{{movie.backdropPath}}" alt="No Image">
+                                <div class="caption">
+                                    <p>
+                                    <strong>{{movie.title}}</strong>
+                                    <span class="pull-right" ng-init="rate=movie.voteAverage">
+                                       <label>{{movie.voteAverage | number:1}}</label> <uib-rating ng-model="rate" max="1" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                    </span>
+                                    </p>
+                                    <h5></h5>
+                                    <p>
+                                        <a href="#" ui-sref="movie-detail({id:movie.id})" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>  <!-- Right Panel -->
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

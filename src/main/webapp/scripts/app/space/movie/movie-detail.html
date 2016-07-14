@@ -1,0 +1,198 @@
+
+<div>
+    <h2>{{vm.movie.originalTitle}} ({{vm.movie.releaseDate | date:'yyyy'}})</h2>
+    <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4"> <!-- Left Panel -->
+        <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Basic Info</h3>
+        </div>
+        <div class="panel-body">
+            <img ng-src="{{vm.movie.backdropPath}}" class="center-block img-responsive" alt="Image">
+        </div> 
+                     <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Rating : </strong><span ng-init="rate=vm.movie.voteAverage">
+                                        <uib-rating ng-model="rate" max="10" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                       <label>{{vm.movie.voteAverage | number:1}}/10</label>
+                                    </span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Genres : </strong><span ng-repeat="genre in vm.movie.genres">
+                                            <a class="form-control-static" ui-sref="genre-detail({id: {{genre.id}}})">
+                                                <span class="badge">{{genre.name}}</span>
+                                            </a>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>Released : </strong>
+                                {{vm.movie.releaseDate | date:'dd-MMM-yyyy'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item">    
+                            <span>
+                                <strong>Runtime : </strong>
+                                {{vm.movie.runtime | minutesToHours}}
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>Budget : </strong>
+                                {{vm.movie.budget | currency:"USD$":0}}
+                            </span>
+                        </li>    
+                        <li class="list-group-item">
+                            <span>
+                                <strong>Revenue : </strong>
+                                {{vm.movie.revenue | currency:"USD$":0}}
+                            </span>
+                        </li>
+<!--                         <li class="list-group-item">
+                            <strong>Official Site :</strong> <a target="_blank" class="btn btn-primary btn-xs" href="{{vm.person.homepage}}">{{vm.person.homepage}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Also Known As :</strong> {{vm.person.aka}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>IMDB Profile :</strong> <a target="_blank" href="http://www.imdb.com/name/{{vm.person.imdbId}}"><i class="fa fa-link"></i></a>
+                        </li> -->
+                    </ul>
+                     <!-- <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                         <div class="table-responsive">
+                             <table class="table table-hover">
+                                 <tbody>
+                                     <tr>
+                                        <td><strong>{{vm.movie.originalTitle}}</strong></td>
+                                        <td><span class="pull-right" ng-init="rate=vm.movie.voteAverage">
+                                        <uib-rating ng-model="rate" max="10" read-only="true" aria-labelledby="default-rating"></uib-rating>
+                                       <label>{{vm.movie.voteAverage | number:1}}/10</label>
+                                    </span></td>
+                                     </tr>
+                                     <tr>
+                                        <td>Runtime : {{vm.movie.runtime | minutesToHours}}</td>
+                                        <td></td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                        <span ng-repeat="genre in vm.movie.genres">
+                                            <a class="form-control-static" ui-sref="genre-detail({id: {{genre.id}}})">
+                                                <span class="badge">{{genre.name}}</span>
+                                            </a>
+                                        </span>&nbsp;
+                                        </td>
+                                        <td><span class="pull-right">{{vm.movie.releaseDate | date:'dd-MMM-yyyy'}}</span></td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                         </div>
+                     </div>  -->  
+                    
+        </div>
+    </div> <!-- Left Panel -->
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8"> <!-- Right Panel -->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Overview</h3>
+            </div>
+            <div class="panel-body">
+                <p>{{vm.movie.overview}}</p>
+            </div>
+        </div>
+    </div>  <!-- Right Panel -->
+    </div>
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cast</h3>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="cast in vm.movie.credit.cast" ng-if="cast.person.profilePath" class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                            <div class="thumbnail-panel">
+                                <img class="center-block img-circle" ng-src="{{cast.person.profilePath}}" alt="{{cast.person.name}}">
+                                <div class="caption">
+                                    <p>
+                                    <strong><a ui-sref="person-detail({id:{{cast.person.id}}})">{{cast.person.name}}</a></strong>
+                                    </p>
+                                    <p>{{cast.character}}</p>
+                                </div>
+                            </div>
+            </div>
+            <!-- <div class="list-group col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="cast in vm.movie.credit.cast" ng-if="cast.person.profilePath">
+                <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading"><img class="center-block img-responsive" ng-src="{{cast.person.profilePath}}" alt="{{cast.person.name}}"></h4>
+                <p class="list-group-item-text">{{cast.character}} <em><a ui-sref="person-detail({id:{{cast.person.id}}})">{{cast.person.name}}</a></em></p>
+                </a>
+            </div> -->
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Crew</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Birth Place</th>
+                            <th>Born</th>
+                            <th>Links</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="crew in vm.movie.credit.crew">
+                            <td><a ui-sref="person-detail({id:crew.person.id})">{{crew.person.id}}</a></td>
+                            <td>{{crew.person.name}}</td>
+                            <td>{{crew.person.birthPlace}}</td>
+                            <td>{{crew.person.birthday | date:'MMM dd, yyyy'}}</td>
+                            <td>
+                                <div class="btn-group flex-btn-group-container">
+                                <a ng-if="crew.person.homepage" class="btn btn-link" target="_blank" href="{{crew.person.homepage}}">Homepage</a>
+                                <a ng-if="crew.person.imdbId" class="btn btn-link" target="_blank" href="http://www.imdb.com/name/{{crew.person.imdbId}}">IMDB</a>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button"
+                                    ui-sref="person-detail({id:crew.person.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Reviews <span ng-if="vm.movie.reviews" class="badge">{{vm.movie.reviews.length}}</span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                             <table class="table table-hover">
+                                 <tbody>
+                                     <tr ng-repeat="review in vm.movie.reviews">
+                                        <td>
+                                            <div>
+                                            <h4>{{review.author}}&nbsp;<a title="Goto Original review" target="_blank" href="{{review.url}}"><span class="glyphicon glyphicon-link"></span></a></h4>
+                                            <p class="text text-info text-justified">{{review.content}}</p>
+                                            </div>
+                                        </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                    </div> 
+        </div>
+    </div>
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
