@@ -1,4 +1,4 @@
-# moviespace
+# Moviespace
 
 This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
 
@@ -26,6 +26,17 @@ Bower is used to manage CSS and JavaScript dependencies used in this application
 specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
 Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
 
+# Building for Local
+
+To run the app in local environment, we can either run in in `dev` or `fast` profile configured.
+    
+    For fast profile -> `./gradlew clean bootrun -Pfast`
+    For dev profile  -> `./gradlew clean bootrun -Pdev`
+
+If you wish to skip bower install every time you run,
+
+    ./gradlew clean bootrun -Pfast(or dev) -PskipBower    
+
 # Building for production
 
 To optimize the moviespace client for production, run:
@@ -50,29 +61,6 @@ Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in
 UI end-to-end tests are powered by [Protractor][], which is built on top of WebDriverJS. They're located in `src/test/javascript/e2e` 
 and can be run by starting Spring Boot in one terminal (`./gradlew bootRun`) and running the tests (`grunt itest`) in a second one.
 
-# Continuous Integration
-
-To setup this project in Jenkins, use the following configuration:
-
-* Project name: `moviespace`
-* Source Code Management
-    * Git Repository: `git@github.com:xxxx/moviespace.git`
-    * Branches to build: `*/master`
-    * Additional Behaviours: `Wipe out repository & force clone`
-* Build Triggers
-    * Poll SCM / Schedule: `H/5 * * * *`
-* Build
-    * Invoke Gradle script / Use Gradle Wrapper / Tasks: `-Pprod clean test bootRepackage`
-    * Execute Shell / Command:
-        ````
-        ./gradlew bootRun &
-        bootPid=$!
-        sleep 30s
-        grunt itest
-        kill $bootPid
-        ````
-* Post-build Actions
-    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml,build/reports/e2e/*.xml`
 
 [JHipster]: https://jhipster.github.io/
 [Node.js]: https://nodejs.org/
