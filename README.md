@@ -26,12 +26,12 @@ Bower is used to manage CSS and JavaScript dependencies used in this application
 specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
 Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
 
-# Building for Local
+Building for Local
 
 To run the app in local environment, we can either run in in `dev` or `fast` profile configured.
-    
-    For fast profile -> `./gradlew clean bootrun -Pfast`
-    For dev profile  -> `./gradlew clean bootrun -Pdev`
+
+    For fast profile -> ./gradlew clean bootrun -Pfast
+    For dev profile  -> ./gradlew clean bootrun -Pdev
 
 If you wish to skip bower install every time you run,
 
