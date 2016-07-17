@@ -24,23 +24,18 @@ import info.movito.themoviedbapi.model.people.PersonPeople;
 @Service
 public class GlobalPeopleService {
 
-	
     private final Logger log = LoggerFactory.getLogger(GlobalPeopleService.class);
-        
-    @Inject
-    Environment env;
     
+    @Inject
     private TmdbApi tmdbApi;
     
     private TmdbPeople people;
-    
+
     @Inject
-    public GlobalPeopleService(Environment env) {
-    	this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
-		people = tmdbApi.getPeople();
-	}
-	
+    public GlobalPeopleService(final TmdbApi tmdbApi) {
+    	this.tmdbApi = tmdbApi;
+    	people = tmdbApi.getPeople();
+    }
     
     public PersonPeople getPersonById(Integer id) {
     	return people.getPersonInfo(id);

@@ -22,19 +22,16 @@ public class GlobalCollectionService {
 private final Logger log = LoggerFactory.getLogger(GlobalCollectionService.class);
     
     @Inject
-    Environment env;
-    
     private TmdbApi tmdbApi;
     
     private TmdbCollections collections;
     
     @Inject
-    public GlobalCollectionService(Environment env) {
-    	this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
-		collections = tmdbApi.getCollections();
-	}
-    
+    public GlobalCollectionService(final TmdbApi tmdbApi) {
+    	this.tmdbApi = tmdbApi;
+    	collections = tmdbApi.getCollections();
+    }
+        
     public CollectionInfo getCollectionById(Integer id) {
     	return collections.getCollectionInfo(id, AppConstants.Language.EN.value());
     }

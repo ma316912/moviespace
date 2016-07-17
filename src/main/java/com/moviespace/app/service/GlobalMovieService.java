@@ -38,11 +38,9 @@ public class GlobalMovieService {
 	private final Logger log = LoggerFactory.getLogger(GlobalMovieService.class);
     
     @Inject
-    Environment env;
-    
-    @Inject
     private MovieMapper movieMapper;
     
+    @Inject
     private TmdbApi tmdbApi;
     
     private TmdbMovies movies;
@@ -52,14 +50,12 @@ public class GlobalMovieService {
     private TmdbFind find;
     
     @Inject
-    public GlobalMovieService(Environment env) {
-    	this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
-		movies = tmdbApi.getMovies();
-		reviews = tmdbApi.getReviews();
-		find = tmdbApi.getFind();
-	}
-	
+    public GlobalMovieService(final TmdbApi tmdbApi) {
+    	this.tmdbApi = tmdbApi;
+    	movies = tmdbApi.getMovies();
+    	reviews = tmdbApi.getReviews();
+    	find = tmdbApi.getFind();
+    }
     
     public MovieDb getMovieById(Integer id) {
     	return movies.getMovie(id, AppConstants.Language.EN.value());

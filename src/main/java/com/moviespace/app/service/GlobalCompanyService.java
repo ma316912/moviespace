@@ -25,19 +25,15 @@ public class GlobalCompanyService {
 private final Logger log = LoggerFactory.getLogger(GlobalCompanyService.class);
     
     @Inject
-    Environment env;
-    
     private TmdbApi tmdbApi;
     
     private TmdbCompany companies;
     
     @Inject
-    public GlobalCompanyService(Environment env) {
-    	this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
-		companies = tmdbApi.getCompany();
-	}
-	
+    public GlobalCompanyService(final TmdbApi tmdbApi) {
+    	this.tmdbApi = tmdbApi;
+    	companies = tmdbApi.getCompany();
+    }
     
     public Company getCompanyById(Integer id) {
     	return companies.getCompanyInfo(id);

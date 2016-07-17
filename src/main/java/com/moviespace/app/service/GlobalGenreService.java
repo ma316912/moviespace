@@ -22,19 +22,15 @@ public class GlobalGenreService {
 private final Logger log = LoggerFactory.getLogger(GlobalGenreService.class);
     
     @Inject
-    Environment env;
-    
     private TmdbApi tmdbApi;
     
     private TmdbGenre genres;
     
     @Inject
-    public GlobalGenreService(Environment env) {
-    	this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
-		genres = tmdbApi.getGenre();
-	}
-	
+    public GlobalGenreService(final TmdbApi tmdbApi) {
+    	this.tmdbApi = tmdbApi;
+    	genres = tmdbApi.getGenre();
+    }
     
     public List<Genre> getGenres() {
     	return genres.getGenreList(AppConstants.Language.EN.value());
