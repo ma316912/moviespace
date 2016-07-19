@@ -110,9 +110,8 @@ public class MovieService {
 	private CrewService crewService;
 	
 	@Inject
-	public MovieService(Environment env) {
-		this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
+	public MovieService(final TmdbApi tmdbApi) {
+		this.tmdbApi = tmdbApi;
 	}
 	
 	

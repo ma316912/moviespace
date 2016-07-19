@@ -31,20 +31,16 @@ public class GlobalSearchService {
 private final Logger log = LoggerFactory.getLogger(GlobalSearchService.class);
     
     @Inject
-    Environment env;
-    
     private TmdbApi tmdbApi;
     
     private TmdbSearch search;
     
     @Inject
-    public GlobalSearchService(Environment env) {
-    	this.env = env;
-		tmdbApi = new TmdbApi(env.getProperty("ws.tmdb.api_key"));
-		search = tmdbApi.getSearch();
-	}
+    public GlobalSearchService(final TmdbApi tmdbApi) {
+    	this.tmdbApi = tmdbApi;
+    	search = tmdbApi.getSearch();
+    }
     
-	
 	public List<MovieDb> searchMovie(String query) {
 		List<MovieDb> resultMovies = search.searchMovie(query, 0, AppConstants.Language.EN.value(), false, 0).getResults();
 		if(!AppUtil.isEmptyOrNull(resultMovies)) {
