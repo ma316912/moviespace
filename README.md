@@ -52,15 +52,6 @@ To ensure everything worked, run:
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
-# Testing
-
-Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript` and can be run with:
-
-    grunt test
-    
-UI end-to-end tests are powered by [Protractor][], which is built on top of WebDriverJS. They're located in `src/test/javascript/e2e` 
-and can be run by starting Spring Boot in one terminal (`./gradlew bootRun`) and running the tests (`grunt itest`) in a second one.
-
 
 [JHipster]: https://jhipster.github.io/
 [Node.js]: https://nodejs.org/
